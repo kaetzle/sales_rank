@@ -14,4 +14,4 @@ def run_ablation_study(dataset_path, classifier_type,
                                                                            category_feature, feature_to_drop)
     drop_classifier = tr.train_model(X_train_drop, y_train_drop, classifier_type)
     eval.compute_evaluation_report(classifier, X_test, y_test)
-    eval.compute_evaluation_report(classifier, X_test_drop, y_test_drop)
+    eval.compute_evaluation_report(drop_classifier, X_test_drop, y_test_drop)
