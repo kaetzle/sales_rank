@@ -3,20 +3,16 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
 
-def train_model(X_train, X_test, y_train, y_test, classifier_type):
-    print("X_train shape:", X_train.shape)
-    print("X_test shape:", X_test.shape)
-    print("y_train shape:", y_train.shape)
-    print("y_test shape:", y_test.shape)
+def train_model(X_train, y_train, classifier_type):
     if classifier_type == "RandomForest":
-        classifier_rf = RandomForestClassifier(max_depth=20, min_samples_leaf=5, n_estimators=200,
+        classifier = RandomForestClassifier(max_depth=20, min_samples_leaf=5, n_estimators=200,
                                            n_jobs=-1, random_state=42, oob_score=True)
-        classifier_rf.fit(X_train, y_train)
-        return classifier_rf
+        classifier.fit(X_train, y_train)
+        return classifier
 
     if classifier_type == "LogisticRegression":
-        classifier_rf = LogisticRegression(random_state=0).fit(X_train, y_train)
-        return classifier_rf
+        classifier = LogisticRegression(random_state=0).fit(X_train, y_train)
+        return classifier
 
 
 def find_parameters_with_gsearch(classifier, X_train, y_train):
