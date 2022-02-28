@@ -41,7 +41,6 @@ def plot_confusion_matrix(y_test, y_pred):
     plt.ylabel('True label')
     plt.title('Confusion Matrix')
     plt.show()
-    #plt.savefig("confusion_matrix.png")
     return conf_matrix
 
 

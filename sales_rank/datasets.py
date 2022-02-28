@@ -1,15 +1,15 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-""" This class allows you to load preprocessed dataset as a pandas Dataframe"""
+""" This file allows you to load preprocessed dataset as a pandas Dataframe and get the Train & Test corpus"""
 
 
 def prepare_data(dataset_path, category_feature, feature_to_drop=None):
     dataset_df = load_csv(dataset_path)
     y = set_labels(dataset_df)
     if feature_to_drop:
-        X = set_features(dataset_df, category_feature, feature_to_remove=None)
-    else :
+        X = set_features(dataset_df, category_feature, feature_to_drop)
+    else:
         X = set_features(dataset_df, category_feature)
     X_train, X_test, y_train, y_test = split_dataset_into_test_train(X, y)
     return X_train, X_test, y_train, y_test
@@ -36,6 +36,10 @@ def set_features(dataset_df, category_feature="opportunity_stage_after_30_days",
         to_drop = category_feature
     X = dataset_df.drop(to_drop, axis=1)
     return X
+
+
+def set_all_features(dataset_df, category_feature="opportunity_stage_after_30_days"):
+    return dataset_df.drop(category_feature, axis=1)
 
 
 def split_dataset_into_test_train(X, y, test_size=0.20, random_state=42):
