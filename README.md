@@ -29,7 +29,7 @@ This project is a part of code to answer a Doctolib Use Case : how to rank prosp
 
 
 It's organised into the following parts:
-* sales_rank/__main__.py which is the core of the project
+* sales_rank/\_\_main__.py which is the core of the project
 * a requirements.txt which lists all required libraries to launch the project
 * this README.md
 
