@@ -1,9 +1,19 @@
+""" This file trains a classifier"""
+
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
 
 def train_model(X_train, y_train, classifier_type):
+    """
+    This function launches the training on a classifier using
+    the train specified data.
+    :param X_train: Train Features
+    :param y_train: Train Labels
+    :param classifier_type: LogisticRegression or RandomForest
+    :return: trained classifier
+    """
     if classifier_type == "RandomForest":
         classifier = RandomForestClassifier(max_depth=20, min_samples_leaf=5, n_estimators=200,
                                            n_jobs=-1, random_state=42, oob_score=True)

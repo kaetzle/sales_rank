@@ -1,3 +1,5 @@
+""" This file compute the scores and metrics to evaluate a trained model"""
+
 import numpy as np
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report
 import matplotlib.pyplot as plt
@@ -5,6 +7,14 @@ import seaborn as sns
 
 
 def compute_evaluation_report(classifier, X_test, y_test):
+    """
+    This function compute different metrics to generate a small
+    report of evaluation containing an Area Under the Curver score,
+    F1-score with Recall & Precision and a confusion matrix.
+    :param classifier: trained classifier
+    :param X_test: Test Features
+    :param y_test: Test Labels
+    """
     y_pred, proba = compute_test_classifier(classifier, X_test)
     auc_score = calcultate_auc_score(classifier, X_test, y_test)
     report_f1 = calculate_f1_metrics(y_test, y_pred)
